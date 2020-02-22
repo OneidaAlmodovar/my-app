@@ -16,6 +16,12 @@ export class EmployeeListComponent implements OnInit {
 
   employee:Employee;
 
+  model = {
+    left: true,
+    middle: false,
+    right: false
+  };
+
   constructor() { }
 
   ngOnInit(): void {

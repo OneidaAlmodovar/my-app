@@ -1,25 +1,29 @@
 <h3>Employee List</h3>
 
-<div>
-  <label for="name">Name</label>
-  <input type="text" name="name" [(ngModel)]="employeeName" > 
+
+<div class="row">
+  <div class="col-md-6">
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="name" [(ngModel)]="employeeName" > 
+    </div>
+    <div>
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" [(ngModel)]="employeeLastName">
+    </div>
+    <div>
+      <label for="number">Employee Number</label>
+      <input type="text" name="number" [(ngModel)]="employeeNumber">
+    </div>
+    <button (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
+    
+  </div>
+  <div class="col-md-6">
+    <ul>
+      <li *ngFor="let employee of employeeList; let indx = index">
+        {{employee.name}} {{ employee.lastName}} 
+        <button (click)="onDelete(indx)"> Remove</button>
+      </li>
+    </ul>
+  </div>
 </div>
-
-<div>
-  <label for="lastName">Last Name</label>
-  <input type="text" name="lastName" [(ngModel)]="employeeLastName">
-</div>
-
-<div>
-  <label for="number">Employee Number</label>
-  <input type="text" name="number" [(ngModel)]="employeeNumber">
-</div>
-
-<button (click)="onAddEmployee()" > Add Employee </button>
-
-<ul>
-  <li *ngFor="let employee of employeeList; let indx = index">
-    {{employee.name}} {{ employee.lastName}} 
-    <button (click)="onDelete(indx)"> Remove</button>
-  </li>
-</ul>
