@@ -1,30 +1,49 @@
-<h3>Employee List</h3>
-
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <div>
+      <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" name="name" [(ngModel)]="employeeName" > 
+        <input class="form-control" type="text" name="name" [(ngModel)]="employee.name" > 
       </div>
-      <div>
+      <div class="form-group">
         <label for="lastName">Last Name</label>
-        <input type="text" name="lastName" [(ngModel)]="employeeLastName">
+        <input class="form-control" type="text" name="lastName" [(ngModel)]="employee.lastName">
       </div>
-      <div>
+      <div class="form-group">
         <label for="number">Employee Number</label>
-        <input type="text" name="number" [(ngModel)]="employeeNumber">
+        <input class="form-control" type="text" name="number" [(ngModel)]="employee.number">
       </div>
-      <button (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
+      <div class="form-group">
+        <div > </div>
+        <div class="col-md-4">
+          <button (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
+        </div>
+      </div>
       
     </div>
     <div class="col-md-6">
-      <ul>
-        <li *ngFor="let employee of employeeList; let indx = index">
-          {{employee.name}} {{ employee.lastName}} 
-          <button (click)="onDelete(indx)"> Remove</button>
-        </li>
-      </ul>
+
+
+
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeeList; let indx = index">
+            <td> {{employee.employeeNumber}}</td>
+            <td>{{employee.name}}</td>
+            <td>{{ employee.lastName}} </td>
+            <td><button class="btn btn-sm btn-danger" (click)="onDelete(indx)"> Remove</button></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

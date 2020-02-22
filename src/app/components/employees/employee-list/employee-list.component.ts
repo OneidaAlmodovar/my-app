@@ -9,12 +9,7 @@ import { Employee } from '../../../models/employee.model';
 export class EmployeeListComponent implements OnInit {
 
   employeeList: Array<Employee>;
-
-  employeeName:string;
-  employeeLastName: string;
-  employeeNumber: number;
-
-  employee:Employee;
+  employee:Employee= new Employee();
 
   model = {
     left: true,
@@ -29,12 +24,7 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onAddEmployee(){
-    this.employeeList.push(
-      new Employee(
-        this.employeeName, 
-        this.employeeLastName, 
-        this.employeeNumber)
-    );
+    this.employeeList.push(this.employee);
   }
 
   onDelete(index:number){
