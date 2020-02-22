@@ -25,6 +25,7 @@ export class EmployeeListComponent implements OnInit {
 
   onAddEmployee(){
     this.employeeList.push(this.employee);
+    this.employee = new Employee();
   }
 
   onDelete(index:number){

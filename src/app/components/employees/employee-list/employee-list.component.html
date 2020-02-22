@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label for="name">Name</label>
         <input class="form-control" type="text" name="name" [(ngModel)]="employee.name" > 
@@ -13,19 +13,13 @@
         <label for="number">Employee Number</label>
         <input class="form-control" type="text" name="number" [(ngModel)]="employee.number">
       </div>
+      
       <div class="form-group">
-        <div > </div>
-        <div class="col-md-4">
-          <button (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
-        </div>
+         <button (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
       </div>
       
     </div>
-    <div class="col-md-6">
-
-
-
-
+    <div class="col-md-8">
       <table class="table">
         <thead>
           <tr>
@@ -40,7 +34,9 @@
             <td> {{employee.employeeNumber}}</td>
             <td>{{employee.name}}</td>
             <td>{{ employee.lastName}} </td>
-            <td><button class="btn btn-sm btn-danger" (click)="onDelete(indx)"> Remove</button></td>
+            <td><button class="btn btn-sm btn-danger" (click)="onDelete(indx)"> 
+              <i class="fa fa-trash"></i>
+            </button></td>
           </tr>
         </tbody>
       </table>
