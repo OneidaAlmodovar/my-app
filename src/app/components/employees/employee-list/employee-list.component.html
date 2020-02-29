@@ -30,8 +30,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let employee of employeeList; let indx = index">
-            <td> {{employee.employeeNumber}}</td>
+          <tr *ngFor="let employee of employees; let indx = index">
+            <td> {{employee.number}}</td>
             <td>{{employee.name}}</td>
             <td>{{ employee.lastName}} </td>
             <td><button class="btn btn-sm btn-danger" (click)="onDelete(indx)"> 

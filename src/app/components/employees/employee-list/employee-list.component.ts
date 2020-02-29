@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../../models/employee.model';
+import { DataService } from '../../../services/data.service'
 
 @Component({
   selector: 'app-employee-list',
@@ -8,28 +9,36 @@ import { Employee } from '../../../models/employee.model';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employeeList: Array<Employee>;
   employee:Employee= new Employee();
-
+  employees: Array<Employee>;
   model = {
     left: true,
     middle: false,
     right: false
   };
 
-  constructor() { }
+  constructor( 
+    private dataService: DataService 
+  ) { }
 
   ngOnInit(): void {
-    this.employeeList = new Array<Employee>()
+    this.onGetEmployees();
+  }
+
+  onGetEmployees(){
+    this.employees = this.dataService.getEmployees();
   }
 
   onAddEmployee(){
-    this.employeeList.push(this.employee);
+    console.log("onAddEmployee", this.employee);
+    this.dataService.setEmployee(this.employee)
     this.employee = new Employee();
+    this.onGetEmployees();
   }
 
   onDelete(index:number){
-    this.employeeList.splice(index,1);
+    this.dataService.deleteEmployee(index);
+    this.onGetEmployees();
   }
 
 }
