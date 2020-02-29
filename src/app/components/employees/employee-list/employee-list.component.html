@@ -20,12 +20,19 @@
             <td [routerLink]="['/employees/employee-detail', i ]">{{ employee.number}}</td>
             <td>{{ employee.name}}</td>
             <td>{{ employee.lastName}} </td>
-            <td><button class="btn btn-sm btn-danger" (click)="onDelete(i)"> 
+            <td>
+              <button class="btn btn-sm btn-danger" (click)="confirm(i)"> 
               <i class="fa fa-trash"></i>
-            </button></td>
+            </button>
+          </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+
+
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle">
+    
+  </p-confirmDialog>
 

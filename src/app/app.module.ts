@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule,  } from '@angular/core';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -44,10 +47,14 @@ import { HomeComponent } from './components/home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ConfirmDialogModule
   ],
-  providers: [],
+  providers: [
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

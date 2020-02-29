@@ -16,7 +16,8 @@
       </div>
       
       <div class="form-group">
-         <button (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
+         <button *ngIf="!employeeId" (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
+         <button *ngIf="employeeId" (click)="onUpdateEmployee()" class="btn btn-primary"> Update Employee </button>
       </div>
       
     </div>

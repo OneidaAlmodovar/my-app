@@ -22,14 +22,21 @@ export class EmployeeDetailComponent implements OnInit {
   ngOnInit(): void {
     this.employee = new Employee();
     this.employeeId = this.route.snapshot.paramMap.get("index");
-    console.log(this.employeeId);
-    
+
+    if(this.employeeId){
+      this.employee = this.dataService.getEmployee(this.employeeId );
+    }
   }
 
   onAddEmployee(){
     console.log("onAddEmployee", this.employee);
-    this.dataService.setEmployee(this.employee)
+    this.dataService.setEmployee(this.employee);
     this.employee = new Employee();
+    this.router.navigateByUrl('/employees/employee-list');
+  }
+
+  onUpdateEmployee(){
+    this.dataService.updateEmployee(this.employeeId, this.employee);
     this.router.navigateByUrl('/employees/employee-list');
   }
 

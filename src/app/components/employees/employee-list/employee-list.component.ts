@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../../../models/employee.model';
 import { DataService } from '../../../services/data.service'
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-employee-list',
@@ -18,7 +19,8 @@ export class EmployeeListComponent implements OnInit {
   };
 
   constructor( 
-    private dataService: DataService 
+    private dataService: DataService ,
+    private confirmationService:ConfirmationService
   ) { }
 
   ngOnInit(): void {
@@ -33,5 +35,16 @@ export class EmployeeListComponent implements OnInit {
     this.dataService.deleteEmployee(index);
     this.onGetEmployees();
   }
+
+  confirm(index){
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to remove employee?',
+      accept: () => {
+          this.onDelete(index)
+      }
+  });
+
+  }
+  
 
 }

@@ -14,9 +14,15 @@ export class DataService {
     return this.employeeList;
   }
 
+  getEmployee(index){
+    return this.employeeList[index];
+  }
+
+  updateEmployee(index, employee){
+    this.employeeList[index] = employee;
+  }
+  
   setEmployee(employee: Employee){
-    console.log();
-    
     if(!this.employeeList){
       this.employeeList = [];
     }
