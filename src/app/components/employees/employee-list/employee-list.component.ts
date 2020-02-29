@@ -42,7 +42,7 @@ export class EmployeeListComponent implements OnInit {
       accept: () => {
           this.onDelete(index)
       }
-  });
+    });
 
   }
   

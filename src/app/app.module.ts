@@ -5,6 +5,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+//import { TableModule } from 'primeng/table';
+
+
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -50,7 +53,8 @@ import { HomeComponent } from './components/home/home.component';
     BrowserAnimationsModule,
     FormsModule,
     NgbModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+   // TableModule
   ],
   providers: [
     ConfirmationService

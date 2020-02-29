@@ -21,7 +21,7 @@ export class EmployeeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.employee = new Employee();
-    this.employeeId = this.route.snapshot.paramMap.get("index");
+    this.employeeId = this.route.snapshot.paramMap.get('index');
 
     if(this.employeeId){
       this.employee = this.dataService.getEmployee(this.employeeId );
