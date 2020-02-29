@@ -1,25 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input class="form-control" type="text" name="name" [(ngModel)]="employee.name" > 
-      </div>
-      <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input class="form-control" type="text" name="lastName" [(ngModel)]="employee.lastName">
-      </div>
-      <div class="form-group">
-        <label for="number">Employee Number</label>
-        <input class="form-control" type="text" name="number" [(ngModel)]="employee.number">
-      </div>
-      
-      <div class="form-group">
-         <button (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
-      </div>
-      
-    </div>
-    <div class="col-md-8">
+    
+    <div class="col-md-12">
       <table class="table">
         <thead>
           <tr>
@@ -31,8 +13,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let employee of employees; let indx = index">
-            <td> {{employee.number}}</td>
-            <td>{{employee.name}}</td>
+            <td>{{ employee.number}}</td>
+            <td>{{ employee.name}}</td>
             <td>{{ employee.lastName}} </td>
             <td><button class="btn btn-sm btn-danger" (click)="onDelete(indx)"> 
               <i class="fa fa-trash"></i>

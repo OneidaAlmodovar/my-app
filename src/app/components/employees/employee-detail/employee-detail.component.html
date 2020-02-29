@@ -2,18 +2,25 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-ms-12 col-md-6 col-lg-4"> <div class="block">1</div> </div>
-    <div class="col-ms-12 col-md-6 col-lg-4"> <div class="block">1</div> </div>
-    <div class="col-md-4"> <div class="block">1</div> </div>
-    <div class="col-md-4"> <div class="block">1</div> </div>
-    <div class="col-md-4"> <div class="block">1</div> </div>
-    <div class="col-md-12"> <div class="block">1</div> </div>
-    <div class="col-md-3"> <div class="block">1</div> </div>
-    <div class="col-md-3"> <div class="block">1</div> </div>
-    <div class="col-md-3"> <div class="block">1</div> </div>
-    <div class="col-md-3"> <div class="block">1</div> </div>
-    <div class="col-md-2"> <div class="block">1</div> </div>
-    <div class="col-md-2"> <div class="block">1</div> </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name" [(ngModel)]="employee.name" > 
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input class="form-control" type="text" name="lastName" [(ngModel)]="employee.lastName">
+      </div>
+      <div class="form-group">
+        <label for="number">Employee Number</label>
+        <input class="form-control" type="text" name="number" [(ngModel)]="employee.number">
+      </div>
+      
+      <div class="form-group">
+         <button (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
+      </div>
+      
+    </div>
 
   </div>
 </div>

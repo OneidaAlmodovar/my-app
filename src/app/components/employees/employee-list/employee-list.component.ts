@@ -29,13 +29,6 @@ export class EmployeeListComponent implements OnInit {
     this.employees = this.dataService.getEmployees();
   }
 
-  onAddEmployee(){
-    console.log("onAddEmployee", this.employee);
-    this.dataService.setEmployee(this.employee)
-    this.employee = new Employee();
-    this.onGetEmployees();
-  }
-
   onDelete(index:number){
     this.dataService.deleteEmployee(index);
     this.onGetEmployees();
