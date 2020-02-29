@@ -17,6 +17,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "employees", component:EmployeesComponent, children:[
+    { path: "employee-detail/:index", component: EmployeeDetailComponent },
     { path: "employee-detail", component: EmployeeDetailComponent },
     { path: "employee-list", component: EmployeeListComponent },
   ]},
