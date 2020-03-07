@@ -28,19 +28,23 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
+            <th scope="col"></th>
+            <th scope="col">id</th>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Last Name</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let employee of employees; let i = index">
-            <td [routerLink]="['/employees/employee-detail', i ]">{{ employee.number}}</td>
-            <td>{{ employee.name}}</td>
-            <td>{{ employee.lastName}} </td>
+          <tr *ngFor="let user of users; let i = index">
+            <td> <img style="width: 20px;" src="{{user.avatar}}" alt=""> </td>
+            <td [routerLink]="['/employees/employee-detail', i ]">{{ user.id}}</td>
+            <td>{{ user.email}}</td>
+            <td>{{ user.first_name}} </td>
+            <td>{{ user.last_name}} </td>
             <td>
-              <button class="btn btn-sm btn-danger" (click)="confirm(i)"> 
+              <button class="btn btn-sm btn-danger" (click)="confirm(user.id)"> 
                 <i class="fa fa-trash"></i>
               </button>
             </td>

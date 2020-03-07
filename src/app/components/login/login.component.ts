@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -27,10 +27,8 @@ export class LoginComponent implements OnInit {
     this.error = null;
     console.log("[LoginComponent] Login ", this.username);
     this.authService.login(this.username, this.password).subscribe(token =>{
-      console.log(token);
       this.route.navigateByUrl("/home");
     }, error =>{
-      console.error(error.error.error);
       this.error= error.error.error;
     })
   }

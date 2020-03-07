@@ -12,6 +12,8 @@ export class EmployeeListComponent implements OnInit {
 
   employee:Employee= new Employee();
   employees: Array<Employee>;
+
+  users: Array<any>;
   model = {
     left: true,
     middle: false,
@@ -28,12 +30,18 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onGetEmployees(){
-    this.employees = this.dataService.getEmployees();
+    this.dataService.getEmployees().subscribe(res =>{
+      console.log(res);
+      
+      this.users = res['data'];
+    })
   }
 
   onDelete(index:number){
-    this.dataService.deleteEmployee(index);
-    this.onGetEmployees();
+    this.dataService.deleteEmployee(index).subscribe(res => {
+      console.log(res);
+    })
+    //this.onGetEmployees();
   }
 
   confirm(index){
