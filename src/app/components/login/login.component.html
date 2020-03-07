@@ -1,0 +1,55 @@
+<div class="container">
+
+  <form #formLogin="ngForm" (ngSubmit)="formLogin.form.valid && onLogin()" >
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="email"  name="username" class="form-control" 
+            #user="ngModel"
+            required email
+            (keyup.enter)="onKeyup($event)"
+            (keyup.control.c)="onKeyup($event)"
+            (keyup.control.shift.a)="onKeyup($event)"
+            (change)="onChange($event)"
+            [(ngModel)]="username">
+        </div>
+        <div class="text-danger" 
+          *ngIf="formLogin.submitted && user.invalid">
+          <div *ngIf="user.errors.required"> Requiered  </div>
+          <div *ngIf="user.errors.email"> Username must be a valid email</div>
+        </div>
+      
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input  type="password" name="password" class="form-control" 
+            #pass="ngModel" 
+            required [(ngModel)]="password">
+        </div>
+
+        <div class="text-danger" 
+          *ngIf="formLogin.submitted && pass.invalid">
+          <div *ngIf="pass.errors.required"> Requiered  </div>
+        </div>
+
+        <div class="form-group">
+          <label for="country"> Country </label>
+          <select name="country" id="country" class="form-control" 
+            [(ngModel)]="country" 
+            (change)="onChange($event)">
+            <option value=""> Select a Country</option>
+            <option [ngValue]="country" 
+              *ngFor="let country of countries"> {{country}} 
+            </option>
+          </select>
+        </div>
+
+        {{country}}
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </div>
+    </form>
+</div>

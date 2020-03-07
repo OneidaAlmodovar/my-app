@@ -13,9 +13,11 @@ import { UsersComponent } from './components/users/users.component';
 import { UserDetailComponent } from './components/users/user-detail/user-detail.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
+  { path: "login", component: LoginComponent },
   { path: "employees", component:EmployeesComponent, children:[
     { path: "employee-detail/:index", component: EmployeeDetailComponent },
     { path: "employee-detail", component: EmployeeDetailComponent },

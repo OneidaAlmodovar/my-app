@@ -13,6 +13,9 @@ export class EmployeeDetailComponent implements OnInit {
   employee: Employee;
   employeeId: string;
 
+  cities: Array<string> = ['Chihuahua', 'Delicias', 'Juarez'];
+  city: string;
+
   constructor(
     private dataService: DataService,
     private router:Router,
@@ -38,6 +41,17 @@ export class EmployeeDetailComponent implements OnInit {
   onUpdateEmployee(){
     this.dataService.updateEmployee(this.employeeId, this.employee);
     this.router.navigateByUrl('/employees/employee-list');
+  }
+
+  onKeyUp(event){
+    console.log(event.key);
+    console.log(event.target.value);
+  }
+
+  onChange(event){
+    console.log(event);
+    console.log(event.type);
+    console.log(event.target.value);
   }
 
 }
