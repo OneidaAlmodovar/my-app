@@ -3,11 +3,15 @@
   <form #formLogin="ngForm" (ngSubmit)="formLogin.form.valid && onLogin()" >
     <div class="row">
       <div class="col-md-4">
+        <div class="text-danger" *ngIf="error">
+          {{error}}
+        </div>
         <div class="form-group">
           <label for="username">Username</label>
           <input type="email"  name="username" class="form-control" 
+            [ngClass]="{'is-invalid': formLogin.submitted && user.invalid}"
             #user="ngModel"
-            required email
+            required email 
             (keyup.enter)="onKeyup($event)"
             (keyup.control.c)="onKeyup($event)"
             (keyup.control.shift.a)="onKeyup($event)"
@@ -18,11 +22,13 @@
           *ngIf="formLogin.submitted && user.invalid">
           <div *ngIf="user.errors.required"> Requiered  </div>
           <div *ngIf="user.errors.email"> Username must be a valid email</div>
+          <div *ngIf="user.errors.pattern">Username must be letters</div>
         </div>
       
         <div class="form-group">
           <label for="password">Password</label>
           <input  type="password" name="password" class="form-control" 
+            [ngClass]="{'is-invalid': formLogin.submitted && pass.invalid}"
             #pass="ngModel" 
             required [(ngModel)]="password">
         </div>
@@ -35,7 +41,9 @@
         <div class="form-group">
           <label for="country"> Country </label>
           <select name="country" id="country" class="form-control" 
-            [(ngModel)]="country" 
+            #select="ngModel" 
+            [ngClass]="{'is-invalid': formLogin.submitted && select.invalid}"
+            [(ngModel)]="country" required
             (change)="onChange($event)">
             <option value=""> Select a Country</option>
             <option [ngValue]="country" 

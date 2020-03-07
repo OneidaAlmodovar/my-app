@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from "../../services/auth.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,14 +13,26 @@ export class LoginComponent implements OnInit {
   password:string;
   countries: Array<string> = ['Mexico', 'USA', 'Canada'];
   country: string;
+  error:string;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private route:Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   onLogin(){
-    console.log("Login ", this.username);
+    this.error = null;
+    console.log("[LoginComponent] Login ", this.username);
+    this.authService.login(this.username, this.password).subscribe(token =>{
+      console.log(token);
+      this.route.navigateByUrl("/home");
+    }, error =>{
+      console.error(error.error.error);
+      this.error= error.error.error;
+    })
   }
 
   onKeyup(event){

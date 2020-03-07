@@ -7,6 +7,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 //import { TableModule } from 'primeng/table';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -56,6 +58,7 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     NgbModule,
     ConfirmDialogModule,
+    HttpClientModule
    // TableModule
   ],
   providers: [
