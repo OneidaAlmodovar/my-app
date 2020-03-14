@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { Router } from "@angular/router";
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private route:Router
+    private route:Router,
+    private messageService:MessageService
+
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +33,10 @@ export class LoginComponent implements OnInit {
       this.route.navigateByUrl("/home");
     }, error =>{
       this.error= error.error.error;
+      this.messageService.add({
+        severity:'error', 
+        detail:error.error.error
+      })
     })
   }
 

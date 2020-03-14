@@ -23,5 +23,17 @@
         <a class="nav-link" href="" [routerLink]="['/settings']">Settings | </a>
       </li>
     </ul>
+    <ul class="navbar-nav ml-md-auto">
+      <li class="nav-item" *ngIf="isLoged">
+        Welcome {{user.first_name}}
+        <img class="rounded-circle avatar" [src]="user.avatar" alt="">
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="" [routerLink]="['/login']" *ngIf="!isLoged">Login</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="" [routerLink]="['/login']" (click)="onLogout()" *ngIf="isLoged">Logout</a>
+      </li>
+    </ul>
   </div>
 </nav>

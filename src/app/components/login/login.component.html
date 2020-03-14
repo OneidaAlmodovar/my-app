@@ -3,9 +3,6 @@
   <form #formLogin="ngForm" (ngSubmit)="formLogin.form.valid && onLogin()" >
     <div class="row">
       <div class="col-md-4">
-        <div class="text-danger" *ngIf="error">
-          {{error}}
-        </div>
         <div class="form-group">
           <label for="username">Username</label>
           <input type="email"  name="username" class="form-control" 
@@ -37,22 +34,6 @@
           *ngIf="formLogin.submitted && pass.invalid">
           <div *ngIf="pass.errors.required"> Requiered  </div>
         </div>
-
-        <div class="form-group">
-          <label for="country"> Country </label>
-          <select name="country" id="country" class="form-control" 
-            #select="ngModel" 
-            [ngClass]="{'is-invalid': formLogin.submitted && select.invalid}"
-            [(ngModel)]="country" required
-            (change)="onChange($event)">
-            <option value=""> Select a Country</option>
-            <option [ngValue]="country" 
-              *ngFor="let country of countries"> {{country}} 
-            </option>
-          </select>
-        </div>
-
-        {{country}}
 
         <div class="form-group">
           <button type="submit" class="btn btn-primary">Login</button>

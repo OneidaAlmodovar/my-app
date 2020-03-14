@@ -16,7 +16,7 @@ export class DataService {
   ) { }
 
   getEmployees(): Observable<any>{
-    return this.httpClient.get(environment.api +'/users?delay=5');
+    return this.httpClient.get(environment.api +'/users?delay=1');
   }
   
   find(path, params?): Observable<any>{
