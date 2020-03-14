@@ -34,6 +34,7 @@ import { UserDetailComponent } from './components/users/user-detail/user-detail.
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { CanActivateDirective } from './directives/canactivate.directive';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { LoginComponent } from './components/login/login.component';
     UserDetailComponent,
     UserListComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    CanActivateDirective
   ],
   imports: [
     BrowserModule,

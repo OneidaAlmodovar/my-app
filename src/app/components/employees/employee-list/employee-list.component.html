@@ -1,11 +1,13 @@
   <div class="row">
 
-    <button class="btn btn-primary mb-4" 
+    <div *canActivate="['admin', 'seller']">
+      <button  class="btn btn-primary mb-4" 
       [routerLink]="['/employees/employee-detail']"> 
       Add Employee
     </button>
+    </div>
     
-    <div class="col-md-12">
+    <div class="col-md-12" >
 
 <!-- 
       <p-table [value]="employees">
@@ -25,7 +27,7 @@
         </ng-template>
     </p-table> -->
 
-      <table class="table table-hover">
+      <table class="table table-hover" >
         <thead>
           <tr>
             <th scope="col"></th>
@@ -38,7 +40,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of users; let i = index">
-            <td [routerLink]="['/employees/employee-detail', user.id ]"> <img style="width: 50px;" class="rounded-circle" src="{{user.avatar}}" alt=""> </td>
+            <td [routerLink]="['/employees/employee-detail', user.id ]"> <img  style="width: 50px;" class="rounded-circle" src="{{user.avatar}}" alt=""> </td>
             <td [routerLink]="['/employees/employee-detail', user.id ]">{{ user.id}}</td>
             <td [routerLink]="['/employees/employee-detail', user.id ]">{{ user.email}}</td>
             <td [routerLink]="['/employees/employee-detail', user.id ]">{{ user.first_name}} </td>

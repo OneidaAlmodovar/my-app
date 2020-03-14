@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   countries: Array<string> = ['Mexico', 'USA', 'Canada'];
   country: string;
   error:string;
+  role: string = "";
 
   constructor(
     private authService: AuthService,
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
   onLogin(){
     this.error = null;
     console.log("[LoginComponent] Login ", this.username);
-    this.authService.login(this.username, this.password).subscribe(token =>{
+    this.authService.login(this.username, this.password, this.role).subscribe(token =>{
       this.route.navigateByUrl("/home");
     }, error =>{
       this.error= error.error.error;

@@ -30,13 +30,27 @@
             required [(ngModel)]="password">
         </div>
 
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select name="role" #r="ngModel" [(ngModel)]="role" class="form-control" 
+            [ngClass]="{'is-invalid': formLogin.submitted && r.invalid}" required>
+            <option value="" selected>Select a Role</option>
+            <option value="admin">Admin</option>
+            <option value="seller">Seller</option>
+            <option value="employee">Employee</option>
+            <option value="customer">Customer</option>
+          </select>
+        </div>
+
         <div class="text-danger" 
           *ngIf="formLogin.submitted && pass.invalid">
           <div *ngIf="pass.errors.required"> Requiered  </div>
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button 
+            type="submit" 
+            class="btn btn-primary">Login</button>
         </div>
       </div>
     </div>

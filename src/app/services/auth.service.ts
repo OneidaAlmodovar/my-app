@@ -10,6 +10,7 @@ export class AuthService {
 
   token: string;
   user: any;
+  role: any;
   userEmmiter: EventEmitter<any> = new EventEmitter();
   isLoged: boolean;
 
@@ -17,7 +18,7 @@ export class AuthService {
     private httpClient:HttpClient
   ) { }
 
-  login(username:string, password:string): Observable<any> {
+  login(username:string, password:string, role: string): Observable<any> {
     let credentials = {
       "email": username,
       "password": password
@@ -28,6 +29,7 @@ export class AuthService {
           this.user = user['data'];
           this.token = res['token'];
           this.isLoged = true;
+          this.role = role;
           this.userEmmiter.emit(this.user);
 
           console.log(this.token);
@@ -44,5 +46,9 @@ export class AuthService {
     this.user = {};
     this.isLoged = false;
     this.userEmmiter.emit(this.user);
+  }
+
+  getRole(){
+    return this.role;
   }
 }
