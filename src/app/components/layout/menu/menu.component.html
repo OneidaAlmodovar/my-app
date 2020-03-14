@@ -29,10 +29,15 @@
         <img class="rounded-circle avatar" [src]="user.avatar" alt="">
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="" [routerLink]="['/login']" *ngIf="!isLoged">Login</a>
+        <a class="nav-link" href="" 
+          [routerLink]="['/login']" 
+          *ngIf="!isLoged">Login</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="" [routerLink]="['/login']" (click)="onLogout()" *ngIf="isLoged">Logout</a>
+        <a class="nav-link" href="" 
+          [routerLink]="['/login']" 
+          (click)="onLogout()" 
+          *ngIf="isLoged">Logout</a>
       </li>
     </ul>
   </div>
