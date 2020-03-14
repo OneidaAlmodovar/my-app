@@ -5,6 +5,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 //import { TableModule } from 'primeng/table';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -58,11 +61,14 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     NgbModule,
     ConfirmDialogModule,
+    ToastModule,
+    ProgressSpinnerModule,
     HttpClientModule
    // TableModule
   ],
   providers: [
-    ConfirmationService
+    ConfirmationService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service'
 import { Employee } from "../../../models/employee.model";
 import { Router, ActivatedRoute } from "@angular/router";
-
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-employee-detail',
   templateUrl: './employee-detail.component.html',
@@ -19,7 +19,8 @@ export class EmployeeDetailComponent implements OnInit {
   constructor(
     private dataService: DataService,
     private router:Router,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -28,14 +29,15 @@ export class EmployeeDetailComponent implements OnInit {
     this.onGetEmployee();
   }
 
-  onGetEmployee(){
+  async onGetEmployee(){
     console.log("onGetEmployee", this.employeeId);
     if(this.employeeId){
-      this.dataService.getEmployee(this.employeeId).toPromise().then(res=>{
-         this.employee = res as Employee;
-     }).catch(error=>{
-      console.log(error);
-     });
+      try{
+        let res = await this.dataService.getEmployee(this.employeeId).toPromise();
+        this.employee = res['data'];
+      }catch(error){
+        console.log(error);
+      }
    }
   }
 
@@ -47,8 +49,25 @@ export class EmployeeDetailComponent implements OnInit {
   }
 
   onUpdateEmployee(){
-    this.dataService.updateEmployee(this.employeeId, this.employee);
-    this.router.navigateByUrl('/employees/employee-list');
+    this.dataService.updateEmployee(this.employeeId, this.employee).subscribe(employee=>{
+      //this.router.navigateByUrl('/employees/employee-list');
+      console.log(employee);
+      this.messageService.add({
+        severity:'success', 
+        summary:'Employee', 
+        detail:'Employee saved successfully'
+      });
+    }, error =>{
+      console.log(error);
+      
+      this.messageService.add({
+        severity:'error', 
+        summary:'Employee', 
+        detail: error
+      });
+    });
+
+    
   }
 
   onKeyUp(event){

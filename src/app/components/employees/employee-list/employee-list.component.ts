@@ -12,6 +12,7 @@ export class EmployeeListComponent implements OnInit {
 
   employee:Employee= new Employee();
   employees: Array<Employee>;
+  isLoading: boolean;
 
   users: Array<any>;
   model = {
@@ -30,9 +31,11 @@ export class EmployeeListComponent implements OnInit {
   }
 
   onGetEmployees(){
+    this.isLoading = true;
     this.dataService.getEmployees().subscribe(res =>{
       console.log(res);
       this.users = res['data'];
+      this.isLoading = false;
     })
   }
 

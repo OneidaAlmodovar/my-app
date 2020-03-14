@@ -15,7 +15,7 @@ export class DataService {
   ) { }
 
   getEmployees(): Observable<any>{
-    return this.httpClient.get('https://reqres.in/api/users');
+    return this.httpClient.get('https://reqres.in/api/users?delay=5');
   }
 
   getEmployee(id){
@@ -23,8 +23,9 @@ export class DataService {
     return this.httpClient.get('https://reqres.in/api/users/'+ id);
   }
 
-  updateEmployee(index, employee){
-    this.employeeList[index] = employee;
+  updateEmployee(id, employee){
+    //this.employeeList[index] = employee;
+    return this.httpClient.put('https://reqres.in/api/users/'+ id, employee );
   }
   
   setEmployee(employee: Employee){

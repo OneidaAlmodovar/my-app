@@ -1,49 +1,34 @@
 
-Events: 
-(keyup), (keyup.enter), (keyup.shift.enter), (keyup.control.c)
-(change)
-(blur)
-
-Form Validation:
-
-form  #f="ngForm"  (ngSubmit)="f.form.valid && onLogin()"
-required 
-minlength="4"
 
   <div class="row">
     <div class="col-md-4">
+      <img class="rounded avatar" [src]="employee.avatar" alt="">
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="number">Employee Number</label>
+        <input class="form-control" type="text" name="number" [(ngModel)]="employee.id">
+      </div>
       <div class="form-group">
         <label for="name">Name</label>
         <input class="form-control" type="text" name="name" 
           (change)="onChange($event)" 
           (keyup.control.c)="onKeyUp($event)"  
-          [(ngModel)]="employee.name" 
+          [(ngModel)]="employee.first_name" 
         > 
       </div>
       <div class="form-group">
         <label for="lastName">Last Name</label>
-        <input class="form-control" type="text" name="lastName" [(ngModel)]="employee.lastName">
+        <input class="form-control" type="text" name="lastName" [(ngModel)]="employee.last_name">
       </div>
       <div class="form-group">
-        <label for="number">Employee Number</label>
-        <input class="form-control" type="text" name="number" [(ngModel)]="employee.number">
+        <label for="number">Email</label>
+        <input class="form-control" type="text" name="email" [(ngModel)]="employee.email">
       </div>
-
-      <div class="form-group">
-        <label for="number">City</label>
-        <select class="form-control" name="city" id="city" (change)="onChange($event)" [(ngModel)]="city">
-          <option value=""> Select a City </option>
-          <option [ngValue]="city" *ngFor="let city of cities"> {{city}} </option>
-        </select>
-      </div>
-
-      {{city}}
-      
       <div class="form-group">
          <button *ngIf="!employeeId" (click)="onAddEmployee()" class="btn btn-primary"> Add Employee </button>
          <button *ngIf="employeeId" (click)="onUpdateEmployee()" class="btn btn-primary"> Update Employee </button>
       </div>
-      
     </div>
 
   </div>
