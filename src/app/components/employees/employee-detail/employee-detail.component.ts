@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 })
 export class EmployeeDetailComponent implements OnInit {
 
-  employee: Employee;
+  employee: any;
   employeeId: string;
 
   cities: Array<string> = ['Chihuahua', 'Delicias', 'Juarez'];
@@ -25,10 +25,18 @@ export class EmployeeDetailComponent implements OnInit {
   ngOnInit(): void {
     this.employee = new Employee();
     this.employeeId = this.route.snapshot.paramMap.get('index');
+    this.onGetEmployee();
+  }
 
+  onGetEmployee(){
+    console.log("onGetEmployee", this.employeeId);
     if(this.employeeId){
-      this.employee = this.dataService.getEmployee(this.employeeId );
-    }
+      this.dataService.getEmployee(this.employeeId).toPromise().then(res=>{
+         this.employee = res as Employee;
+     }).catch(error=>{
+      console.log(error);
+     });
+   }
   }
 
   onAddEmployee(){

@@ -18,8 +18,9 @@ export class DataService {
     return this.httpClient.get('https://reqres.in/api/users');
   }
 
-  getEmployee(index){
-    return this.employeeList[index];
+  getEmployee(id){
+    //return this.employeeList[id];
+    return this.httpClient.get('https://reqres.in/api/users/'+ id);
   }
 
   updateEmployee(index, employee){

@@ -32,7 +32,6 @@ export class EmployeeListComponent implements OnInit {
   onGetEmployees(){
     this.dataService.getEmployees().subscribe(res =>{
       console.log(res);
-      
       this.users = res['data'];
     })
   }
