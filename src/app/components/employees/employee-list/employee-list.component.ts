@@ -43,7 +43,6 @@ export class EmployeeListComponent implements OnInit {
     this.dataService.deleteEmployee(index).subscribe(res => {
       console.log(res);
     })
-    //this.onGetEmployees();
   }
 
   confirm(index){
