@@ -18,9 +18,8 @@ export class ProductListComponent implements OnInit {
 
   async getProducts(){
     let options = {};
-    this.products = await this.dataService.getProducts(options).toPromise();
-    console.log(this.products);
-    
+    //this.products = await this.dataService.getProducts(options).toPromise();
+    //console.log(this.products);
   }
 
 }
