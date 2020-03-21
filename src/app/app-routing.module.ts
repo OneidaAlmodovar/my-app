@@ -18,22 +18,23 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "home", pathMatch:"full"},
-  { path: "home", component: HomeComponent, canActivate: [SecurityGuard] },
+  { path: "home", component: HomeComponent, canActivate: [] },
   { path: "login", component: LoginComponent },
-  { path: "employees", component:EmployeesComponent, canActivate: [SecurityGuard], children:[
-    { path: "employee-detail/:index", component: EmployeeDetailComponent , canActivate: [SecurityGuard]},
-    { path: "employee-detail", component: EmployeeDetailComponent, canActivate: [SecurityGuard] },
-    { path: "employee-list", component: EmployeeListComponent, canActivate: [SecurityGuard] },
+  { path: "employees", component:EmployeesComponent, canActivate: [], children:[
+    { path: "employee-detail/:index", component: EmployeeDetailComponent , canActivate: []},
+    { path: "employee-detail", component: EmployeeDetailComponent, canActivate: [] },
+    { path: "employee-list", component: EmployeeListComponent, canActivate: [] },
   ]},
-  { path: "products", component: ProductsComponent, canActivate: [SecurityGuard], children: [
-    { path: "product-detail", component: ProductDetailComponent, canActivate: [SecurityGuard] },
-    { path: "product-list", component: ProductListComponent , canActivate: [SecurityGuard]},
+  { path: "products", component: ProductsComponent, canActivate: [], children: [
+    { path: "product-detail/:index", component: ProductDetailComponent , canActivate: []},
+    { path: "product-detail", component: ProductDetailComponent, canActivate: [] },
+    { path: "product-list", component: ProductListComponent , canActivate: []},
   ]},
-  { path: "users", component: UsersComponent, canActivate: [SecurityGuard], children: [
-    { path: "user-detail", component: UserDetailComponent, canActivate: [SecurityGuard] },
-    { path: "user-list", component: UserListComponent, canActivate: [SecurityGuard] },
+  { path: "users", component: UsersComponent, canActivate: [], children: [
+    { path: "user-detail", component: UserDetailComponent, canActivate: [] },
+    { path: "user-list", component: UserListComponent, canActivate: [] },
   ]},
-  { path: "settings", component: SettingsComponent, canActivate: [SecurityGuard]}
+  { path: "settings", component: SettingsComponent, canActivate: []}
 
 ];
 
